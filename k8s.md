@@ -24,3 +24,12 @@ SERVICE_IP=$(kubectl get ingress superset-1-superset-ingress \
 echo "https://${SERVICE_IP}/"
 ```
 
+### Port Forwarding
+```
+kubectl port-forward feed-service-7cc46b75b-fxtwd 1234:1234 1235:1235
+```
+...or via kubefwd based on a list of service names
+```
+sudo -E kubefwd svc -l 'app.kubernetes.io/name in (kafka,schema-registry,user-management-postgresql)'
+```
+
